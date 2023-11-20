@@ -2,7 +2,7 @@
 App({
   // 生命周期回调——监听小程序初始化
   onLaunch(opts) {
-    console.clear()
+    // console.clear()
 
     // 同步获取当前storage的相关信息
     console.log("storage的相关信息")
@@ -17,10 +17,10 @@ App({
     })
 
     // 获取系统信息
-    console.log(wx.getSystemInfoSync())
+    // console.log(wx.getSystemInfoSync())
 
     // 获取微信APP基础信息，基础库 2.20.1 开始支持
-    console.log(wx.getAppBaseInfo())
+    // console.log(wx.getAppBaseInfo())
 
     // // 展示本地存储能力
     // const logs = wx.getStorageSync('logs') || []

@@ -2,7 +2,9 @@
 	<view>
 		<block wx:for="{{ list }}" wx:key="keyword">
 			<view catch:tap="goToPlay" data-index="{{ index }}">
-				<view></view>
+				<view>
+					<text>{{ item.id }}</text>
+				</view>
 				<view>
 					<text>{{ item.name }}</text>
 				</view>

@@ -6,7 +6,6 @@ Page({
      */
     data: {
         isPlay: false,
-
         index: 0,
         id: null,
         name: null,
@@ -16,21 +15,16 @@ Page({
         lrc: null,
         pic: null,
         url: null,
-
         sliderMax: 0,
         sliderValue: 0,
-
-        totalTime: '00:00',
-        playIntervalID: null,
-        animationData: {},
-        animationRotate: 0
+        IActx: null,
     },
 
     /**
      * 自定义参数
      */
     eventChannel: null,
-    IActx: null,
+
 
     /**
      * 生命周期函数--监听页面加载
@@ -47,6 +41,27 @@ Page({
         // })
         that.eventChannel.on('transmitMusicInfo', (data) => {
             console.log('上一页面通过eventChannel传送到当前页面的数据', data)
+
+            const innerAudioContext = wx.createInnerAudioContext({
+                useWebAudioImplement: false // 是否使用 WebAudio 作为底层音频驱动，默认关闭。对于短音频、播放频繁的音频建议开启此选项，开启后将获得更优的性能表现。由于开启此选项后也会带来一定的内存增长，因此对于长音频建议关闭此选项
+            })
+
+            console.log(data.url)
+
+            // 音频资源的地址，用于直接播放
+            // innerAudioContext.src = data.url
+            innerAudioContext.src = 'http://downsc.chinaz.net/Files/DownLoad/sound1/201906/11582.mp3'
+            // 开始播放的位置（单位：s），默认为 0
+            innerAudioContext.startTime = 0
+            // 是否自动开始播放，默认为 false
+            innerAudioContext.autoplay = false
+            // 是否循环播放，默认为 false
+            innerAudioContext.loop = false
+            // 音量，范围 0~1，默认为 1「基础库 1.9.90 开始支持」
+            innerAudioContext.volume = 1
+            // 播放速度，范围 0.5~2.0，默认为 1「基础库 2.11.0 开始支持」
+            innerAudioContext.playbackRate = 1.0
+
             that.setData({
                 index: data.index,
                 id: data.id,
@@ -56,38 +71,31 @@ Page({
                 fee: data.fee,
                 lrc: data.lrc,
                 pic: data.pic,
-                url: decodeURIComponent(data.url),
-                sliderMax: Math.floor(data.duration / 1000)
+                // url: data.url,
+                // url: decodeURIComponent(data.url),
+                sliderMax: Math.floor(data.duration / 1000),
+                IActx: innerAudioContext
             })
         })
 
-        that.IActx = wx.createInnerAudioContext({
-            useWebAudioImplement: false
-        })
 
-        wx.setInnerAudioOption({
-            mixWithOther: false,
-            obeyMuteSwitch: false,
-            speakerOn: true,
-            success() {
-                console.log('设置成功')
-            }
-        })
 
-        console.log(that.data)
+        // wx.setInnerAudioOption({
+        //     mixWithOther: false,
+        //     obeyMuteSwitch: false,
+        //     speakerOn: true,
+        //     success() {
+        //         console.log('设置成功')
+        //     }
+        // })
 
-        // 音频资源的地址，用于直接播放
-        that.IActx.src = that.data.url
-        // 开始播放的位置（单位：s），默认为 0
-        that.IActx.startTime = 0
-        // 是否自动开始播放，默认为 false
-        that.IActx.autoplay = false
-        // 是否循环播放，默认为 false
-        that.IActx.loop = false
-        // 音量，范围 0~1，默认为 1「基础库 1.9.90 开始支持」
-        that.IActx.volume = 1
-        // 播放速度，范围 0.5~2.0，默认为 1「基础库 2.11.0 开始支持」
-        that.IActx.playbackRate = 1.0
+        // console.log(that.data)
+
+
+
+
+
+
         // 当前音频的长度（单位：s），只有在当前有合法的src时返回（只读）
         // console.log("当前音频的长度（单位：s）", audioCtx.duration)
         // 当前音频的播放位置（单位：s），只有在当前有合法的src时返回，时间保留小数点后6位「在基础库 2.26.2 之前只读，基础库 2.26.2 开始可读可写，改变 currentTime 值等同于调用 seek」
@@ -110,7 +118,8 @@ Page({
         // // )
 
         // 监听音频自然播放至结束的事件
-        that.IActx.onEnded(() => {
+        // that.IActx.onEnded(() => {
+        that.data.IActx.onEnded(() => {
             console.log("音频自然播放至结束的事件")
             that.setData({
                 isPlay: false,
@@ -119,7 +128,8 @@ Page({
         })
 
         // 监听音频进入可以播放状态的事件。但不保证后面可以流畅播放
-        that.IActx.onCanplay(() => {
+        // that.IActx.onCanplay(() => {
+        that.data.IActx.onCanplay(() => {
             console.log("音频进入可以播放状态的事件")
             // let i = setInterval(() => {
             //     if (that.IActx.duration != 0) {
@@ -132,7 +142,8 @@ Page({
         })
 
         // 监听音频播放进度更新事件
-        that.IActx.onTimeUpdate(() => {
+        // that.IActx.onTimeUpdate(() => {
+        that.data.IActx.onTimeUpdate(() => {
             // console.log("volume: ", that.IActx)
             // console.log("volume: ", that.IActx.volume)
             // console.log("volume: ", that.IActx.currentTime)
@@ -146,7 +157,8 @@ Page({
         // audioCtx.onStop(this.localOnStop())
 
         // 监听音频播放错误事件
-        that.IActx.onError((error) => {
+        // that.IActx.onError((error) => {
+        that.data.IActx.onError(() => {
             console.log('音频播放错误')
             console.log(error)
         })
@@ -188,8 +200,7 @@ Page({
      */
     onUnload() {
         console.warn("页面卸载,onUnload")
-        this.IActx.stop()
-        this.IActx.destroy()
+        this.destroyIActx()
     },
 
     /**
@@ -223,10 +234,12 @@ Page({
         // console.log(event)
         // console.log(event.detail)
         if (100 <= event.detail.dy) {
+            this.destroyIActx()
             this.eventChannel.emit('toggleMusic', {
                 index: this.data.index + 1
             })
         } else if (-100 >= event.detail.dy) {
+            this.destroyIActx()
             this.eventChannel.emit('toggleMusic', {
                 index: this.data.index - 1
             })
@@ -242,21 +255,20 @@ Page({
         console.log('组件点击操作')
         if (this.data.isPlay) {
             console.log("点击暂停")
-            this.IActx.pause()
+            this.data.IActx.pause()
         } else {
             console.log("点击播放")
-            this.IActx.play()
+            this.data.IActx.play()
         }
         this.setData({
             isPlay: !this.data.isPlay
         })
     },
-
-
-    /** */
-    stopTheMusic() {
-        console.log("点击停止")
-        console.log(this.IActx)
-        this.IActx.stop()
+    destroyIActx() {
+        this.data.IActx.stop()
+        this.data.IActx.destroy()
+        this.setData({
+            IActx: null
+        })
     }
 })

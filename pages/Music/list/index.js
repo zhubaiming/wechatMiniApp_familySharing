@@ -1,5 +1,6 @@
 // pages/Music/list/index.js
-var wwyApi = require('../../../utils/WYY_encrypt');
+// var wwyApi = require('../../../utils/WYY_encrypt');
+import { WYY } from '../../../request/wangyiyun/music';
 
 Page({
 
@@ -8,13 +9,13 @@ Page({
      */
     data: {
         list: [{
-                keyword: '加油鸭',
-                artistKey: '张轩睿'
-            },
-            {
-                keyword: '往事只能回味',
-                artistKey: '陈小春'
-            }
+            keyword: '加油鸭',
+            artistKey: '张轩睿'
+        },
+        {
+            keyword: '往事只能回味',
+            artistKey: '陈小春'
+        }
         ]
     },
 
@@ -23,104 +24,38 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-        let that = this
+    async onLoad(options) {
+        const aaa = await WYY.getResourceByKeywords({
+            keyword: '加油鸭',
+            artistKey: '张轩睿'
+        });
 
-        this.data.list.forEach((item, index) => {
-            let keyword = item.keyword,
-                api;
+        // console.log(aaa);
 
-            // 1
-            api = wwyApi.webApi.search_song_info(keyword)
 
-            wx.request({
-                url: api.url,
-                data: {
-                    params: api.params,
-                    encSecKey: api.encSecKey
-                },
-                header: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                method: 'POST',
-                dataType: 'json',
-                success(res) {
-                    console.log(res.data.result)
-                    const resp = res.data.result.songs
-                    resp.forEach((resp_item, resp_index) => {
-                        resp_item.artists.forEach((artist_item, artist_index) => {
-                            if (artist_item.name.includes(item.artistKey)) {
-                                that.setData({
-                                    ["list[" + index + "].id"]: resp_item.id,
-                                    ["list[" + index + "].name"]: resp_item.name,
-                                    ["list[" + index + "].artists"]: resp_item.artists,
-                                    // ["list[" + index + "].pic"]: wwyApi.webApi.get_song_detail(resp_item.id),
-                                    //  https://p2.music.126.net/9JtPoPf-qqEHx59n4zZOGA==/109951164231017207.jpg?param=130y130
-                                    // 	https://p1.music.126.net/pbZt4gUmcXjrW_tx_qRV7A==/109951166366107095.jpg?param=130y130
-                                    ["list[" + index + "].duration"]: resp_item.duration,
-                                    ["list[" + index + "].fee"]: resp_item.fee
-                                })
-                            }
-                        })
-                    })
+        // let that = this
 
-                    // 2
-                    api = wwyApi.webApi.get_song_lyric(item.id)
-                    wx.request({
-                        url: api.url,
-                        data: {
-                            params: api.params,
-                            encSecKey: api.encSecKey
-                        },
-                        header: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        method: 'POST',
-                        dataType: 'json',
-                        success(res) {
-                            that.setData({
-                                ["list[" + index + "].lrc"]: res.data.lrc.lyric
-                            })
-                        }
-                    })
+        // that.data.list.forEach((item, index) => {
+        //     let keyword = item.keyword;
 
-                    // 3
-                    api = wwyApi.webApi.get_song_player_url(item.id)
-                    wx.request({
-                        url: api.url,
-                        data: {
-                            params: api.params,
-                            encSecKey: api.encSecKey
-                        },
-                        header: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        method: 'POST',
-                        dataType: 'json',
-                        success(res) {
-                            that.setData({
-                                ["list[" + index + "].url"]: 'https' + encodeURIComponent(res.data.data[0].url).substring(4)
-                            })
-                        }
-                    })
+        //     const aaa = await WYY.searchSongInfo(keyword);
 
-                    // 4
-                    wx.request({
-                        url: `https://music.163.com/song?id=${item.id}`,
-                        method: 'GET',
-                        success(res) {
-                            let arr = res.data.match(/\<meta(.*)og:image(.*)\>/)
-                            let i = arr[2].search(/http/)
-                            let len = arr[2].lastIndexOf('\"')
-                            that.setData({
-                                ["list[" + index + "].pic"]: arr[2].substring(i, len)
-                            })
-                        }
-                    })
-                }
-            })
-        })
+        //     console.log(aaa);
+        // })
     },
+
+    // onLoad: async function (options) {
+    //     let that = this
+
+    //     this.data.list.forEach((item, index) => {
+    //         let keyword = item.keyword, api;
+
+    //         // let aaa = wyy.wyy.search_song_info(keyword);
+    //         let aaa = await wyy.wyy.aaa(keyword);
+
+    //         console.log(aaa);
+    //     })
+    // },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
