@@ -1,0 +1,37 @@
+@media (prefers-color-scheme: light) {
+
+	/* 一般情况下的颜色 begin */
+	page {
+		/* --red: #FA5151;
+		--origin: #C87D2F;
+		--yellow: #FFC300;
+		--1: #91D300;
+		--2: #95EC69;
+		--3: #07C160;
+		--4: #10AEFF;
+		--5: #1485EE;
+		--6: #6467F0;
+		--7: #576B95; */
+	}
+
+	/* 一般情况下的颜色 end */
+}
+
+@media (prefers-color-scheme: dark) {
+
+	/* DarkMode 下的颜色 begin */
+	page {
+		/* --red: #FA5151;
+		--origin: #C87D2F;
+		--yellow: #FFC300;
+		--1: #91D300;
+		--2: #95EC69;
+		--3: #07C160;
+		--4: #10AEFF;
+		--5: #1485EE;
+		--6: #6467F0;
+		--7: #576B95; */
+	}
+
+	/* DarkMode 下的颜色 end */
+}

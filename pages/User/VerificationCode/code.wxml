@@ -1,0 +1,32 @@
+<view class="container">
+	<view style="height: 24%;padding-top: 50rpx;">
+		<view style="padding: 20rpx;font-size: 20px;font-weight: bold;">
+			<text>请输入短信验证码</text>
+		</view>
+		<view style="font-size: 14px;padding-left: 20rpx;">
+			<text>验证码已通过短信发送至+{{phoneNumberPrefix}} {{phoneNumber}}</text>
+		</view>
+	</view>
+	<form bindsubmit="handleTap2">
+		<view>
+			<view style="width: 100%;height: 50px;display: flex;border: 1px solid #000;justify-content: space-between;">
+				<view style="flex: auto">
+					<input type="number" placeholder="请输入验证码" maxlength="11" name="code" style="height: 100%;" />
+				</view>
+				<block wx:if="{{showSendBtn}}">
+					<view catch:tap="handleTap1" style="flex: 0 0 150px;text-align: center;">
+						<text style="line-height: 50px;">发送验证码</text>
+					</view>
+				</block>
+				<block wx:else>
+					<view style="flex: 0 0 150px;text-align: center;">
+						<text style="line-height: 50px;">{{time}}秒后可重新发送</text>
+					</view>
+				</block>
+			</view>
+		</view>
+		<view>
+			<button plain="true" lang="zh_CN" style="width: 100%;" form-type="submit">确认</button>
+		</view>
+	</form>
+</view>

@@ -1,0 +1,46 @@
+.audio-container {
+    width: 100%;
+    padding: 32rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.audio-bg {
+    width: 600rpx;
+    height: 600rpx;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 10px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.audio-img {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+.ply {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    position: absolute;
+    /* background: ; 顺序 bg-color || bg-image || bg-position [/bg-size]? || bg-repeat || bg-attachment || bg-origin || bg-clip */
+    /*
+    注：
+    1、background-position 和 background-size 属性, 之间需使用/分隔, 且position值在前, size值在后。
+    2、如果同时使用 background-origin 和 background-clip 属性, origin属性值需在clip属性值之前, 如果origin与clip属性值相同, 则可只设置一个值。
+    */
+    background: rgba(0, 0, 0, 0.3) url("https://music.163.com/style/web2/img/frame/playbar.png") 0 -204px no-repeat;
+    z-index: 2;
+}
+
+.pas {
+    background-position: -40px -165px !important;
+}

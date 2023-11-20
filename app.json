@@ -1,0 +1,27 @@
+{
+    "entryPagePath": "pages/Music/list/index",
+    "pages": [
+        "pages/index/index",
+        "pages/User/Login/login",
+        "pages/User/VerificationCode/code",
+        "pages/Utils/Country/Phone/list",
+        "pages/Music/list/index",
+        "pages/Music/play/index",
+        "pages/logs/logs",
+        "components/templates/audio/play",
+        "components/plugins/media/degree_of_progress",
+        "components/plugins/audio/play",
+        "components/plugins/audio/lrc"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "Weixin",
+        "navigationStyle": "default",
+        "homeButton": true,
+        "backgroundColor": "#ffffff",
+        "backgroundTextStyle": "light"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

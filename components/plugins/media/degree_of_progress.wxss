@@ -1,0 +1,24 @@
+.dop-container {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.dop-container>.dop-start-font,
+.dop-container>.dop-end-font {
+	flex: 0 0 100rpx;
+}
+
+.dop-container>.dop-start-font {
+	margin-right: 30rpx;
+}
+
+.dop-container>.dop-end-font {
+	margin-left: 30rpx;
+}
+
+.dop-container>.dop-slider {
+	flex: auto;
+}

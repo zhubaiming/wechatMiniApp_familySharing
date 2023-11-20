@@ -1,0 +1,8 @@
+<view class="audio-container">
+	<view class="audio-bg">
+		<view class="audio-img" animation="{{ imageAnimation }}">
+			<image src="{{ imgSrc }}" mode="aspectFill" show-menu-by-longpress="{{ false }}" binderror="imgLoadingError" bindload="imgLoaded" style="border-radius: 50%" />
+		</view>
+		<view class="ply {{ isPlay ? 'pas' : '' }}" catch:tap="playOrPause"></view>
+	</view>
+</view>

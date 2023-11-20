@@ -1,0 +1,37 @@
+<page-meta page-font-size="system">
+	<view class="container">
+		<view style="height: 24%;padding-top: 50rpx;">
+			<view style="padding: 20rpx;font-size: 20px;font-weight: bold;">
+				<text>开启你的兴趣世界</text>
+			</view>
+			<view style="font-size: 14px;padding-left: 20rpx;">
+				<text>首次登录将自动创建新账号</text>
+			</view>
+		</view>
+		<form bindsubmit="handleTap3">
+			<view>
+				<view style="width: 100%;height: 50px;display: flex;border: 1px solid #000;justify-content: space-between;">
+					<view catch:tap="handleTap1" style="flex: 0 0 60px;text-align: right;padding-right: 10px;">
+						<text style="line-height: 50px;">+{{phoneNumberPrefix}}</text>
+					</view>
+					<view style="flex: auto">
+						<input type="number" placeholder="请输入11位手机号" maxlength="11" name="phoneNumber" value="{{phoneNumberDefault}}" style="height: 100%;" />
+					</view>
+					<view catch:tap="handleTap2" style="flex: 0 0 30px;text-align: center;">
+						<text style="line-height: 50px;">x</text>
+					</view>
+				</view>
+				<view style="width: 100%;height: 50px;">
+					<input type="text" placeholder="请输入邀请码" cursor-spacing="200" adjust-position="true" confirm-type="done" name="invitationCode" value="{{invitationCodeDefault}}" style="height: 100%;" />
+				</view>
+			</view>
+			<view>
+				<button plain="true" lang="zh_CN" style="width: 100%;" form-type="submit">获取短信验证码</button>
+				<!-- <button plain="true" lang="zh_CN" style="width: 100%;" catch:tap="handleTap3">获取短信验证码</button> -->
+			</view>
+		</form>
+		<view style="position: absolute;bottom: 60rpx;width: 100%;text-align: center;font-size: 12px;">
+			<text>登录即表明同意《用户协议》和《隐私政策》</text>
+		</view>
+	</view>
+</page-meta>

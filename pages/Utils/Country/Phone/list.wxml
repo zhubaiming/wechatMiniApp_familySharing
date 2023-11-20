@@ -1,0 +1,17 @@
+<view class="container">
+	<block wx:for="{{list}}" wx:key="" wx:for-item="t">
+		<view style="background-color: rgba(0,0,0,0.1);padding: 4px 0;font-weight: bold;">
+			<text>{{t.zimu}}</text>
+		</view>
+		<block wx:for="{{t.list}}" wx:key="" wx:for-item="l">
+			<view catch:tap="changePhonePrefix" data-prefix="{{l.num}}" style="display: flex;justify-content: space-between; padding: 6px 0;"> 
+				<view>
+					<text>{{l.guojia}}</text>
+				</view>
+				<view>
+					<text>+{{l.num}}</text>
+				</view>
+			</view>
+		</block>
+	</block>
+</view>

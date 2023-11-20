@@ -1,0 +1,11 @@
+<view class="dop-container">
+	<view class="dop-start-font">
+		<text>00:00</text>
+	</view>
+	<view class="dop-slider">
+		<slider min="0" max="{{ max }}" value="{{ value }}" activeColor="{{ activeColor }}" backgroundColor="{{ backgroundColor }}" block-size="{{ blockSize }}" block-color="{{ blockColor }}" show-value="{{ false }}" bindchange="changeSlider" bindchanging="changingSlider" />
+	</view>
+	<view class="dop-end-font">
+		<text>{{ totalTime }}</text>
+	</view>
+</view>

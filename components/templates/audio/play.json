@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "audio-operation": "/components/plugins/audio/play",
+        "audio-lrc": "/components/plugins/audio/lrc",
+        "media-dop": "/components/plugins/media/degree_of_progress"
+    }
+}

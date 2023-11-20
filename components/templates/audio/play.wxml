@@ -1,0 +1,13 @@
+<view>
+	<audio-operation isPlay="{{ isPlay }}" imgSrc="{{ imgSrc }}" sliderValue="{{ sliderValue }}" bind:clickOperation="playOrPause"></audio-operation>
+	<view>
+		<view><text>{{ mediaName }}</text></view>
+		<view>
+			<block wx:for="{{ mediaArtists }}" wx:for-index="idx" wx:for-item="artist" wx:key="id">
+				<text>{{ 0 != idx ? ', ' + artist.name : artist.name }}</text>
+			</block>
+		</view>
+	</view>
+	<audio-lrc isPlay="{{ isPlay }}" fee="{{ fee }}" lrc="{{ lrc }}" sliderValue="{{ sliderValue }}"></audio-lrc>
+	<media-dop isPlay="{{ isPlay }}" duration="{{ duration }}" max="{{ sliderMax }}" value="{{ sliderValue }}"></media-dop>
+</view>

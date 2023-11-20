@@ -1,0 +1,7 @@
+<view class="container">
+	<swiper indicator-dots="{{ false }}" autoplay="{{ false }}" current="0" duration="500" circular="{{ true }}" vertical="{{ true }}" display-multiple-items="1" previous-margin="0px" easing-function="easeInOutCubic" bindchange="changeSwiper" bindtransition="transitionSwiper" bindanimationfinish="animationginishSwiper" class="optionMenu">
+		<swiper-item>
+			<audio-play isPlay="{{ isPlay }}" imgSrc="{{ pic }}" mediaName="{{ name }}" mediaArtists="{{ artists }}" duration="{{ duration }}" fee="{{ fee }}" lrc="{{ lrc }}" sliderMax="{{ sliderMax }}" sliderValue="{{ sliderValue }}" bind:clickOperation="playOrPause" />
+		</swiper-item>
+	</swiper>
+</view>

@@ -1,0 +1,7 @@
+<view class="container">
+  <view>
+    <block wx:for="{{ capabilities }}" wx:key="id">
+      <view catch:tap="tiaozhuan" data-id="{{ item.id }}">{{ item.title }}</view>
+    </block>
+  </view>
+</view>

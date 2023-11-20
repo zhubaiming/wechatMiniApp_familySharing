@@ -1,0 +1,14 @@
+<view>
+    <swiper indicator-dots="{{ false }}" autoplay="{{ false }}" current="{{ currentSwiper }}" duration="500" circular="{{ false }}" vertical="{{ true }}" display-multiple-items="5" previous-margin="0px" easing-function="easeInOutCubic">
+        <block wx:for="{{ lrcs }}" wx:key="index">
+            <swiper-item>
+                <view class="{{ index === currentSwiper + 2 ? 'active' : '' }}" style="text-align: center;">
+                    <text>{{ item.ctx }}</text>
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+
+
+

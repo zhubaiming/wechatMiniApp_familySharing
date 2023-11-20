@@ -1,0 +1,23 @@
+<page-meta>
+	<view>
+		<block wx:for="{{ list }}" wx:key="keyword">
+			<view catch:tap="goToPlay" data-index="{{ index }}">
+				<view></view>
+				<view>
+					<text>{{ item.name }}</text>
+				</view>
+				<view>
+					<block wx:for="{{ item.artists }}" wx:for-index="idx" wx:for-item="artist" wx:key="id">
+						<text>{{ 0 != idx ? ', ' + artist.name : artist.name }}</text>
+					</block>
+				</view>
+				<view>
+					<text>{{ item.duration }}</text>
+				</view>
+				<view>
+					<text>{{ item.url }}</text>
+				</view>
+			</view>
+		</block>
+	</view>
+</page-meta>

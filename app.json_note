@@ -1,0 +1,60 @@
+{
+  "entryPagePath": "小程序默认启动首页",
+  "pages": "页面路径列表",
+  "window": { // 全局的默认窗口表现
+    "navigationBarBackgroundColor":	"HexColor	#000000	导航栏背景颜色，如 #000000",
+"navigationBarTextStyle"	string	white	导航栏标题、状态栏颜色，仅支持 black / white	
+navigationBarTitleText	string		导航栏标题文字内容	
+navigationStyle	string	default	导航栏样式，仅支持以下值：
+default 默认样式
+custom 自定义导航栏，只保留右上角胶囊按钮。参见注 2。	iOS/Android 微信客户端 6.6.0，Windows 微信客户端不支持
+homeButton	boolean	default	在非首页、非页面栈最底层页面或非tabbar内页面中的导航栏展示home键	微信客户端 8.0.24
+backgroundColor	HexColor	#ffffff	窗口的背景色	
+backgroundTextStyle	string	dark	下拉 loading 的样式，仅支持 dark / light	
+backgroundColorTop	string	#ffffff	顶部窗口的背景色，仅 iOS 支持	微信客户端 6.5.16
+backgroundColorBottom	string	#ffffff	底部窗口的背景色，仅 iOS 支持	微信客户端 6.5.16
+enablePullDownRefresh	boolean	false	是否开启全局的下拉刷新。
+详见 Page.onPullDownRefresh	
+onReachBottomDistance	number	50	页面上拉触底事件触发时距页面底部距离，单位为 px。
+详见 Page.onReachBottom	
+pageOrientation	string	portrait	屏幕旋转设置，支持 auto / portrait / landscape 
+详见 响应显示区域变化	2.4.0 (auto) / 2.5.0 (landscape)
+restartStrategy	string	homePage	重新启动策略配置	2.8.0
+initialRenderingCache	string		页面初始渲染缓存配置，支持 static / dynamic	2.11.1
+visualEffectInBackground	string	none	切入系统后台时，隐藏页面内容，保护用户隐私。支持 hidden / none	2.15.0
+handleWebviewPreload	string	static	控制预加载下个页面的时机。支持 static / manual / auto
+  }"",
+  "tabBar": "底部 tab 栏的表现",
+  "networkTimeout": "网络超时时间",
+  "debug": "是否开启 debug 模式，默认关闭",
+  "functionalPages": "是否启用插件功能页，默认关闭",
+  "subpackages": "分包结构配置",
+  "workers": "Worker 代码放置的目录",
+  "requiredBackgroundModes": "需要在后台使用的能力，如「音乐播放」",
+  "requiredPrivateInfos": "调用的地理位置相关隐私接口",
+  "plugins": "使用到的插件",
+  "preloadRule": "分包预下载规则",
+  "resizable": "PC 小程序是否支持用户任意改变窗口大小（包括最大化窗口）；iPad小程序是否支持屏幕旋转。默认关闭",
+  "usingComponents": "全局自定义组件配置",
+  "permission": "小程序接口权限相关设置",
+  "sitemapLocation": "指明 sitemap.json 的位置",
+  "style": "指定使用升级后的weui样式",
+  "useExtendedLib": "指定需要引用的扩展库",
+  "entranceDeclare": "微信消息用小程序打开",
+  "darkmode": "小程序支持 DarkMode",
+  "themeLocation": "指明 theme.json 的位置，darkmode 为 true 为必填",
+  "lazyCodeLoading": "配置自定义组件代码按需注入",
+  "singlePage": "单页模式相关配置",
+  "supportedMaterials": "聊天素材小程序打开相关配置",
+  "serviceProviderTicket": "定制化型服务商票据",
+  "embeddedAppIdList": "半屏小程序 appId",
+  "halfPage": "视频号直播半屏场景设置",
+  "debugOptions": "调试相关配置",
+  "enablePassiveEvent": "touch 事件舰艇是否为 passive",
+  "resolveAlias": "自定义模块映射规则",
+  "renderer": "全局默认的渲染后端",
+  "rendererOptions": "渲染后端选项",
+  "componentFramework": "组件框架",
+  "miniApp": "多端模式场景接入身份管理服务时开启小程序授权页相关配置",
+  "static": "正常情况下默认所有资源文件都被打包发布到所有平台，可以通过 static 字段配置特定每个目录/文件只能发布到特定的平台（多端场景）"
+}

@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "audio-play": "/components/templates/audio/play"
+    }
+}
